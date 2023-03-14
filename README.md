@@ -1,8 +1,46 @@
 # ChatGPT-lthero
 
-## 代码运行
+## 安装依赖
+
+```
+pip install -r requirements.txt
+```
 
 
+
+## 运行代码
+
+```
+python index.py
+```
+
+或者尝试
+
+```
+python3 index.py
+```
+
+
+
+## 使用
+
+1. 必须在代码中设置userApiKey，或者在运行后的网页setting输入userApiKey
+2. 支持自行动态调整topP,temperature等参数
+3. 左侧的LastResponse部分支持markdown格式的代码显示，但仅显示ChatGPT回复的最后一条信息。
+
+
+
+
+
+## 部署
+
+1. 默认只能本机访问：程序最后一条代码`blocks.launch(server_name="127.0.0.1", server_port=7860, debug=False)`。
+
+2. 如果需要部署在服务器，并设置公网访问，要将上述代码`127.0.0.1`修改成`0.0.0.1`，并需要自行放开端口`7860`号
+
+3. 如果没有自己服务器，`blocks.launch(server_name="127.0.0.1", server_port=7860, debug=True)`，程序会自己创建一个公网访问的链接，但必须让程序持续运行
+
+   
 
 
 
