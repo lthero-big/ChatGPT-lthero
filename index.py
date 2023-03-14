@@ -48,11 +48,11 @@ def conversation_history(userInput, history):
     output = openai_create(inp)
     history.append((userInput, output))
     LastResponse = output
-    ResponseInHtml = markdown.markdown(LastResponse, extensions=[
-        'markdown.extensions.extra',
-        'markdown.extensions.codehilite',
-        'markdown.extensions.toc',
-    ])
+#     ResponseInHtml = markdown.markdown(LastResponse, extensions=[
+#         'markdown.extensions.extra',
+#         'markdown.extensions.codehilite',
+#         'markdown.extensions.toc',
+#     ])
     return history, history
 
 
@@ -203,7 +203,7 @@ with blocks:
     # output response content into markdown
     chatbot.change(upDateMD, None, md)
     # output response content into Html
-    chatbot.change(upDateHtml, None, html)
+#     chatbot.change(upDateHtml, None, html)
     # clear textBox
     btn.click(lambda: "", None, state)
     btn.click(Clear, None, md)
