@@ -165,10 +165,6 @@ with blocks:
                         message = gr.Textbox(show_label=False, placeholder=prompt).style(container=False)
                     with gr.Column(scale=0.15, min_width=0):
                         btn = gr.Button(value="ClearAll")
-        with gr.Row():
-            html = gr.HTML("""
-                    HTML
-                    """)
     with gr.Tab("Setting"):
         with gr.Row():
             api = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter your own OpenAI API Key to remove "
