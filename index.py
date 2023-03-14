@@ -3,11 +3,11 @@ import gradio as gr
 import requests
 import markdown
 
+# input your openaiAPI here
+userApi = "sk-ssssss" 
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
 ResponseInHtml = ""
-# input your openaiAPI here
-userApi = "sk-ssssss" 
 temperature = 1
 topP = 0.5
 presencePenalty = 0
