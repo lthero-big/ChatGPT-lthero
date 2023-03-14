@@ -10,7 +10,9 @@
 
 ## 参数说明
 
-openAPI：是chatGPT访问链接
+### openAPI
+
+是chatGPT访问链接
 
 默认值：https://api.openai.com/v1/chat/completions
 
@@ -20,7 +22,9 @@ openAPI：是chatGPT访问链接
 
 
 
-userApiKey：是chatGPT的api，每个账号有18美元额度
+### userApiKey
+
+是chatGPT的api，每个账号有18美元额度
 
 默认值：NULL
 
@@ -30,7 +34,7 @@ userApiKey：是chatGPT的api，每个账号有18美元额度
 
 
 
-temperature：
+### temperature
 
 温度较高，则生成的文本将更加多样化，但存在语法错误和产生无意义内容的风险更高。
 
@@ -40,7 +44,7 @@ temperature：
 
 
 
-topP:
+### topP
 
 Top P可以生成与低温相似的准确性和正确性的文本，但具有更多变化和创造力。
 
@@ -50,7 +54,7 @@ Top P可以生成与低温相似的准确性和正确性的文本，但具有更
 
 
 
-presencePenalty:
+### presencePenalty
 
 presencePenalty是一些自然语言处理模型中使用的参数，用于惩罚已经在对话中提到过的单词或短语的重复出现。这种惩罚鼓励模型生成更多样化和多变化的回应。
 
@@ -60,7 +64,7 @@ presencePenalty是一些自然语言处理模型中使用的参数，用于惩�
 
 
 
-frequencyPenalty:
+### frequencyPenalty
 
 用于惩罚生成的回应中过于频繁出现的单词或短语。这个惩罚的目的是鼓励模型使用更广泛的词汇并产生更多样化和有趣的回应。如果将frequencyPenalty设置得太高，则可能会导致不太连贯或相关的回应
 
@@ -68,6 +72,8 @@ frequencyPenalty:
 
 
 
-maxTokens：单次对话最大token量
+### maxTokens
 
-默认值500
+单次对话最大token量
+
+默认值:500
