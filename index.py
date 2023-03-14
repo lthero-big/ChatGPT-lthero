@@ -5,7 +5,7 @@ import markdown
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
 ResponseInHtml = ""
-userApiKey = "sk-aaa"
+userApiKey = "sk-"
 temperature = 1
 topP = 0.5
 presencePenalty = 0
@@ -48,11 +48,11 @@ def conversation_history(userInput, history):
     output = openai_create(inp)
     history.append((userInput, output))
     LastResponse = output
-#     ResponseInHtml = markdown.markdown(LastResponse, extensions=[
-#         'markdown.extensions.extra',
-#         'markdown.extensions.codehilite',
-#         'markdown.extensions.toc',
-#     ])
+    # ResponseInHtml = markdown.markdown(LastResponse, extensions=[
+    #     'markdown.extensions.extra',
+    #     'markdown.extensions.codehilite',
+    #     'markdown.extensions.toc',
+    # ])
     return history, history
 
 
@@ -167,10 +167,10 @@ with blocks:
                         message = gr.Textbox(show_label=False, placeholder=prompt).style(container=False)
                     with gr.Column(scale=0.15, min_width=0):
                         btn = gr.Button(value="ClearAll")
-        with gr.Row():
-            html = gr.HTML("""
-                    HTML
-                    """)
+        # with gr.Row():
+        #     html = gr.HTML("""
+        #             HTML
+        #             """)
     with gr.Tab("Setting"):
         with gr.Row():
             apiKey = gr.Textbox(elem_id="Input", show_label=False,
@@ -203,7 +203,7 @@ with blocks:
     # output response content into markdown
     chatbot.change(upDateMD, None, md)
     # output response content into Html
-#     chatbot.change(upDateHtml, None, html)
+    # chatbot.change(upDateHtml, None, html)
     # clear textBox
     btn.click(lambda: "", None, state)
     btn.click(Clear, None, md)
