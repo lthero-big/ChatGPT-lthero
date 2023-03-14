@@ -26,7 +26,8 @@ python3 index.py
 
 1. 必须在代码中设置userApiKey，或者在运行后的网页setting输入userApiKey
 2. 支持自行动态调整topP,temperature等参数
-3. 左侧的LastResponse部分支持markdown格式的代码显示，但仅显示ChatGPT回复的最后一条信息。
+3. 回复支持Markdown语法
+4. 左侧的LastResponse部分支持markdown格式的代码显示，但仅显示ChatGPT回复的最后一条信息。
 
 
 
