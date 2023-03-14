@@ -20,6 +20,9 @@ python index.py
 python3 index.py
 ```
 
+## 关于代码
+1. 使用gpt-3.5-turbo模型
+2. 练手项目，代码写得不好
 
 
 ## 使用
