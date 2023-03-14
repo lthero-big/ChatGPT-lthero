@@ -1,25 +1,23 @@
-import openai
 import gradio as gr
 import requests
 import markdown
 
-# input your openaiAPI here
-userApi = "sk-ssssss" 
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
 ResponseInHtml = ""
+userApiKey = "sk-aaa"
 temperature = 1
 topP = 0.5
 presencePenalty = 0
 frequencyPenalty = 0
 maxTokens = 500
-openAPI = 'https://api.openai.com/v1/chat/completions'
+openAPIHost = 'https://api.openai.com/v1/chat/completions'
 
 
 def openai_create(user_prompt):
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer %s' % userApi,
+        'Authorization': 'Bearer %s' % userApiKey,
     }
 
     json_data = {
@@ -36,7 +34,7 @@ def openai_create(user_prompt):
         'top_p': topP,
         'frequency_penalty': frequencyPenalty,
     }
-    response = requests.post(openAPI, headers=headers, json=json_data)
+    response = requests.post(openAPIHost, headers=headers, json=json_data)
     # we have to remove the first two '\n'
     return parse_text(str(response.json()["choices"][0]["message"]["content"]).strip('\n'))
 
@@ -50,11 +48,11 @@ def conversation_history(userInput, history):
     output = openai_create(inp)
     history.append((userInput, output))
     LastResponse = output
-    # ResponseInHtml = markdown.markdown(LastResponse, extensions=[
-    #     'markdown.extensions.extra',
-    #     'markdown.extensions.codehilite',
-    #     'markdown.extensions.toc',
-    # ])
+    ResponseInHtml = markdown.markdown(LastResponse, extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
     return history, history
 
 
@@ -104,10 +102,14 @@ def Clear():
     return LastResponse
 
 
-def changeAPI(setuserApi):
-    global userApi
-    userApi = setuserApi
-    openai.api_key = userApi
+def changeAPI(setuserApiKey):
+    global userApiKey
+    userApiKey = setuserApiKey
+
+
+def changeApiHost(setchangeApiHost):
+    global openAPIHost
+    openAPIHost = setchangeApiHost
 
 
 def changeTemper(setTemperature):
@@ -165,11 +167,17 @@ with blocks:
                         message = gr.Textbox(show_label=False, placeholder=prompt).style(container=False)
                     with gr.Column(scale=0.15, min_width=0):
                         btn = gr.Button(value="ClearAll")
+        with gr.Row():
+            html = gr.HTML("""
+                    HTML
+                    """)
     with gr.Tab("Setting"):
         with gr.Row():
-            api = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter your own OpenAI API Key to remove "
-                                                                            "the 500 token "
-                                                                            "limit.").style(container=False)
+            apiKey = gr.Textbox(elem_id="Input", show_label=False,
+                                placeholder="Enter your own OpenAI API Key to remove "
+                                            "the 500 token "
+                                            "limit.").style(container=False)
+            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host").style(container=False)
         with gr.Row():
             TemperSlider = gr.Slider(0, 1, step=0.01, label="temperature", info="If the temperature is low, the model "
                                                                                 "will probably output the most correct "
@@ -194,8 +202,8 @@ with blocks:
     message.submit(lambda: "", None, message)
     # output response content into markdown
     chatbot.change(upDateMD, None, md)
-    # output response content into Html 
-    # chatbot.change(upDateHtml,None,html)
+    # output response content into Html
+    chatbot.change(upDateHtml, None, html)
     # clear textBox
     btn.click(lambda: "", None, state)
     btn.click(Clear, None, md)
@@ -209,6 +217,7 @@ with blocks:
     # frequencyPenaltySlider
     frequencyPenaltySlider.change(changeFrequencyPenalty, inputs=frequencyPenaltySlider)
     # api
-    api.change(changeAPI, inputs=api)
+    apiKey.change(changeAPI, inputs=apiKey)
+    apiHost.change(changeApiHost, inputs=apiHost)
 
 blocks.launch(server_name="0.0.0.0", server_port=7860, debug=False)
