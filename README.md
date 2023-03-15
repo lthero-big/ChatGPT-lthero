@@ -51,8 +51,104 @@ python3 index.py
 4. 如果想部署在自己国内服务器上，需要使用国内能访问的api，具体方案请查看：noobnooc/noobnooc#9
 
    
+## 自定义域名
+
+如果你想用域名访问，可以配置Nginx反向代理
+
+在nginx的conf.d这个目录下面，添加一个文件【文件名设置为**要访问的域名**同，如chat.abc.com】，用来让nginx作反向代理。比如创建文件
+
+```SHELL
+vim /etc/nginx/conf/conf.d/chat.abc.com.conf
+```
+
+### 使用HTTP
+
+nginx配置文件
+
+```nginx
+server {
+	listen 80;
+	# 要修改server，就是域名
+    server_name chat.abc.com;
+	access_log off;
+	error_log off;
+	location / {
+		# 这里只要修改“7860”运行端口
+        # 127.0.0.1不要动，http不要修改成https
+		proxy_pass http://127.0.0.1:7860;   
+		proxy_redirect off;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_max_temp_file_size 0;
+		client_max_body_size 10m;
+		client_body_buffer_size 128k;
+		proxy_connect_timeout 90;
+		proxy_send_timeout 90;
+		proxy_read_timeout 90;
+		proxy_buffer_size 4k;
+		proxy_buffers 4 32k;
+		proxy_busy_buffers_size 64k;
+		proxy_temp_file_write_size 64k;
+	}
+}
+```
 
 
+
+
+
+### 使用HTTPS
+
+需要有域名证书
+
+nginx配置文件
+
+```Nginx
+server {
+    listen 80;
+    # 要修改server，就是域名
+    server_name chat.abc.com;
+    # 将访问http的强制重定向到https
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    # 要修改server，就是域名
+    server_name chat.abc.com;
+	# TLS的证书位置【要提前上传到服务器】
+    ssl_certificate /root/ssl/chat.abc.com/chat.abc.com.crt;
+    # TLS的公钥位置【要提前上传到服务器】
+    ssl_certificate_key /root/ssl/chat.abc.com/chat.abc.com.key;
+
+    client_max_body_size 50m;
+    client_body_buffer_size 256k;
+    client_header_timeout 3m;
+    client_body_timeout 3m;
+    send_timeout 3m;
+    proxy_connect_timeout 300s;
+    proxy_read_timeout 300s;
+    proxy_send_timeout 300s;
+    proxy_buffer_size 64k;
+    proxy_buffers 4 32k;
+    proxy_busy_buffers_size 64k;
+    proxy_temp_file_write_size 64k;
+    proxy_ignore_client_abort on;
+
+    location / {
+        # 这里只要修改“7860”运行端口
+        # 127.0.0.1不要动，http不要修改成https
+        proxy_pass http://127.0.0.1:7860;
+        proxy_redirect off;
+        proxy_set_header Host $host:80;
+        proxy_ssl_server_name on;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
 
 
 
