@@ -3,9 +3,9 @@ import requests
 import markdown
 
 # input your ApiKey here
-userApiKey = "sk-aaa"
-# input your Api Host here
-openAPIHost = 'https://api.openai.com'
+userApiKey = "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"
+# input your ApiHost here
+openAPIHost = 'https://openai.lthero.me'
 
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
@@ -181,9 +181,7 @@ with blocks:
                                 placeholder="Enter your own OpenAI API Key to remove "
                                             "the 500 token "
                                             "limit.").style(container=False)
-            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host here, default: "
-                                                                                "https://api.openai.com"
-                                                                                "").style(container=False)
+            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host").style(container=False)
         with gr.Row():
             TemperSlider = gr.Slider(0, 1, step=0.01, label="temperature", info="If the temperature is low, the model "
                                                                                 "will probably output the most correct "
@@ -226,4 +224,4 @@ with blocks:
     apiKey.change(changeAPI, inputs=apiKey)
     apiHost.change(changeApiHost, inputs=apiHost)
 
-blocks.launch(server_name="0.0.0.0", server_port=7860, debug=False)
+blocks.launch(server_name="0.0.0.0", server_port=7861, debug=False)
