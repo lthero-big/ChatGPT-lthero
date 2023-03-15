@@ -158,7 +158,7 @@ server {
 
 是chatGPT访问链接
 
-默认值：https://api.openai.com/v1/chat/completions
+默认值：https://api.openai.com
 
 如果想部署在自己国内服务器上，需要使用国内能访问的api
 
