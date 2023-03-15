@@ -2,16 +2,20 @@ import gradio as gr
 import requests
 import markdown
 
+# input your ApiKey here
+userApiKey = "sk-aaa"
+# input your Api Host here
+openAPIHost = 'https://api.openai.com'
+
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
 ResponseInHtml = ""
-userApiKey = "sk-"
 temperature = 1
 topP = 0.5
 presencePenalty = 0
 frequencyPenalty = 0
 maxTokens = 500
-openAPIHost = 'https://api.openai.com/v1/chat/completions'
+
 
 
 def openai_create(user_prompt):
@@ -34,7 +38,7 @@ def openai_create(user_prompt):
         'top_p': topP,
         'frequency_penalty': frequencyPenalty,
     }
-    response = requests.post(openAPIHost, headers=headers, json=json_data)
+    response = requests.post(openAPIHost+"/v1/chat/completions", headers=headers, json=json_data)
     # we have to remove the first two '\n'
     return parse_text(str(response.json()["choices"][0]["message"]["content"]).strip('\n'))
 
@@ -177,7 +181,9 @@ with blocks:
                                 placeholder="Enter your own OpenAI API Key to remove "
                                             "the 500 token "
                                             "limit.").style(container=False)
-            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host").style(container=False)
+            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host, default: "
+                                                                                "https://api.openai.com ,"
+                                                                                "").style(container=False)
         with gr.Row():
             TemperSlider = gr.Slider(0, 1, step=0.01, label="temperature", info="If the temperature is low, the model "
                                                                                 "will probably output the most correct "
