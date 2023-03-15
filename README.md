@@ -1,5 +1,9 @@
 # ChatGPT-lthero
 
+在线体验：https://huggingface.co/spaces/lthero/ChatGPT-lthero
+
+在Setting 里可以修改`apiKEY`与`apiHost`，可以克隆此项目，运行速度更快
+
 ## 安装依赖
 
 ```
