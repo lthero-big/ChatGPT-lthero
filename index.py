@@ -181,8 +181,8 @@ with blocks:
                                 placeholder="Enter your own OpenAI API Key to remove "
                                             "the 500 token "
                                             "limit.").style(container=False)
-            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host, default: "
-                                                                                "https://api.openai.com ,"
+            apiHost = gr.Textbox(elem_id="Input", show_label=False, placeholder="Enter API Host here, default: "
+                                                                                "https://api.openai.com"
                                                                                 "").style(container=False)
         with gr.Row():
             TemperSlider = gr.Slider(0, 1, step=0.01, label="temperature", info="If the temperature is low, the model "
