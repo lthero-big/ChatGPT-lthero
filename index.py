@@ -5,7 +5,7 @@ import markdown
 # input your ApiKey here
 userApiKey = "sk-aaa"
 # input your ApiHost here
-openAPIHost = 'https://openai.lthero.me'
+openAPIHost = 'https://api.openai.com'
 
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
