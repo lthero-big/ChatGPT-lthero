@@ -154,7 +154,7 @@ server {
 
 ## 参数说明
 
-### openAPI
+### openAPIHost
 
 是chatGPT访问链接
 
