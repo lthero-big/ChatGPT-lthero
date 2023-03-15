@@ -48,6 +48,8 @@ python3 index.py
 
 3. 如果没有自己服务器，`blocks.launch(server_name="127.0.0.1", server_port=7860, debug=True)`，程序会自己创建一个公网访问的链接，但必须让程序持续运行
 
+4. 如果想部署在自己国内服务器上，需要使用国内能访问的api，具体方案请查看：noobnooc/noobnooc#9
+
    
 
 
