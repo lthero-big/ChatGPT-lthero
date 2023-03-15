@@ -3,7 +3,7 @@ import requests
 import markdown
 
 # input your ApiKey here
-userApiKey = "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"
+userApiKey = "sk-aaaa"
 # input your ApiHost here
 openAPIHost = 'https://openai.lthero.me'
 
