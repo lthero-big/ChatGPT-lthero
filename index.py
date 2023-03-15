@@ -5,7 +5,7 @@ import markdown
 # input your ApiKey here
 userApiKey = "sk-aaa"
 # input your ApiHost here
-openAPIHost = 'https://api.openai.com'
+openAPIHost = 'https://openai.lthero.me'
 
 prompt = "The following is a conversation with an AI assistant"
 LastResponse = ""
@@ -224,4 +224,4 @@ with blocks:
     apiKey.change(changeAPI, inputs=apiKey)
     apiHost.change(changeApiHost, inputs=apiHost)
 
-blocks.launch(server_name="0.0.0.0", server_port=7861, debug=False)
+blocks.launch(server_name="0.0.0.0", server_port=7860, debug=False)
