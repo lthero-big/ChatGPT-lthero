@@ -44,7 +44,9 @@ def openai_create(user_prompt):
 
 
 def conversation_history(userInput, history):
-    global LastResponse, ResponseInHtml
+    global LastResponse, ResponseInHtml,openAPIHost
+    if openAPIHost=="":
+        openAPIHost='https://api.openai.com'
     history = history or []
     s = list(sum(history, ()))
     s.append(userInput)
