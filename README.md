@@ -7,7 +7,7 @@
 在Setting 里可以修改`apiKEY`与`apiHost`，可以克隆此项目，运行速度更快
 
 ## 效果图
-![图1](https://github.com/lthero-big/ChatGPT-lthero/blob/main/2%5DY%7DOFGHC75L%5B7%60W%40%5DYHA%40O.jpg)
+![图1](https://pic4.zhimg.com/v2-5fdcb0f004fbaf3a55c01e92ba5ec06b_r.jpg)
 
 
 ## 安装依赖
