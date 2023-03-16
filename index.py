@@ -226,4 +226,5 @@ with blocks:
     apiKey.change(changeAPI, inputs=apiKey)
     apiHost.change(changeApiHost, inputs=apiHost)
 
+blocks.title="ChatGPT-lthero"
 blocks.launch(server_name="0.0.0.0", server_port=7860, debug=False)
