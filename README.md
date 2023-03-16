@@ -1,5 +1,6 @@
 # ChatGPT-lthero
 
+内置apiKey和国内apiHost余额用完即止：https://chat.lthero.me
 
 部署后在线体验：https://huggingface.co/spaces/lthero/ChatGPT-lthero
 
