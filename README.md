@@ -7,8 +7,9 @@
 在Setting 里可以修改`apiKEY`与`apiHost`，可以克隆此项目，运行速度更快
 
 ## 效果图
-![图1](https://pic4.zhimg.com/v2-5fdcb0f004fbaf3a55c01e92ba5ec06b_r.jpg)
+![要求产生c++代码](https://pic4.zhimg.com/v2-5fdcb0f004fbaf3a55c01e92ba5ec06b_r.jpg)
 
+![可以收到图片](https://pic2.zhimg.com/v2-a27ab32b1e9d8a0e3b67ef6bcd3105b5_r.jpg)
 
 ## 安装依赖
 
